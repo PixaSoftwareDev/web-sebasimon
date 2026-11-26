@@ -390,7 +390,9 @@ export function Footer() {
         </a>
         <div className="hud mt-8 flex flex-wrap justify-between gap-3 border-t border-linea pt-6 text-humo">
           <span>© {new Date().getFullYear()} Seba Simón</span>
-          <a href="#marca" className="hover:text-lima">Guía de marca</a>
+          <a href="https://intellix.com.ar" target="_blank" rel="noopener" className="transition hover:text-lima">
+            Sitio por <span className="text-hueso/80">Intellix</span>
+          </a>
         </div>
       </div>
     </footer>
