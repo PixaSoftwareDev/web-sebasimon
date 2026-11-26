@@ -1,0 +1,8 @@
+node_modules
+dist
+.playwright-mcp
+.vercel
+
+# Material crudo que mandó Seba (40 MB, incluye videos sin recortar con menores).
+# Los archivos ya procesados para la web están en public/ y src/assets/.
+material-original

@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tinta: #0a0a0a;
+  --color-carbon: #131312;
+  --color-grafito: #1d1d1b;
+  --color-linea: #2b2b28;
+  --color-humo: #8f8f88;
+  --color-hueso: #f5f5f0;
+  --color-lima: #d7f531;
+  --color-oro: #c9a961;
+  --font-sans: "Archivo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --animate-marquee: marquee 28s linear infinite;
+  @keyframes marquee { to { transform: translateX(-50%); } }
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; color-scheme: dark; scrollbar-color: #3a3a36 var(--color-tinta); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-tinta); }
+::-webkit-scrollbar-thumb { background: #3a3a36; border-radius: 999px; border: 2px solid var(--color-tinta); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-lima); }
+body {
+  background: var(--color-tinta);
+  color: var(--color-hueso);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--color-lima); color: var(--color-tinta); }
+:focus-visible { outline: 2px solid var(--color-lima); outline-offset: 3px; }
+
+/* Titulares: Archivo expandida y negra, como en el reel */
+.display {
+  font-stretch: 125%;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+}
+/* Rótulos tipo visor de cámara */
+.hud {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+/* Fotos: blanco y negro contrastado, color al pasar el mouse */
+.foto { filter: grayscale(1) contrast(1.12) brightness(0.95); transition: filter .5s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.grupo-foto:hover .foto { filter: none; transform: scale(1.03); }
+
+.grano::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee { animation: none; }
+  .foto { transition: none; }
+}
